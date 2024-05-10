@@ -1,37 +1,32 @@
 const { error } = require("console");
 const express = require("express");
 const sql = require("mssql");
-const { type } = require("os");
 
 const app = express();
 
 //Configuración de la conexión con la base de datos.
 const config = {
-    server: 'localhost',
-    database: 'user_data',
-    authentication:{
-        type: 'ntlm',
+    server: 'DESKTOP-0BBKCU4',
+    authentication: {
+        type: 'default',
         options: {
-            trustedConnection: true
+            userName: "pruebatecnica",
+            password: "Campanita123+-"
         }
     },
     options: {
-        encrypt: true,
+        port: 1433,
+        database: 'user_data',
         trustServerCertificate: true
     }
-};
-
-
-//Middleware para manejar errores de conexión con la base de datos
-const dbErrorHandler = (err) => {
-    console.log('error de conexión con la base de datos', err);
-};
-
+}
 
 //Conectar a la base de datos
 sql.connect(config).then(() => {
     console.log('Conexión exitosa con la base de datos');
-}).catch(dbErrorHandler);
+}).catch(err =>{
+    console.log('error de conexión con la base de datos', err);
+});
 
 //utilizar motor de vistas ejs
 app.set("view engine", "ejs");
