@@ -1,6 +1,3 @@
-/*document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("btnCalculate").addEventListener("click", calculateEquation);
-});*/
 function calculateEquation() {
 
     let a = parseFloat(document.getElementById("a").value);

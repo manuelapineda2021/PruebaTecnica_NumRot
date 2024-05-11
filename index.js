@@ -4,10 +4,8 @@ const path = require("path");
 
 const app = express();
 
-
 //utilizar motor de vistas ejs
 app.set("view engine", "ejs");
-app.use(express.static('public'));
 
 //Configuración de la conexión con la base de datos.
 const config = {
