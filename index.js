@@ -1,8 +1,13 @@
-const { error } = require("console");
 const express = require("express");
 const sql = require("mssql");
+const path = require("path");
 
 const app = express();
+
+
+//utilizar motor de vistas ejs
+app.set("view engine", "ejs");
+app.use(express.static('public'));
 
 //Configuración de la conexión con la base de datos.
 const config = {
@@ -28,9 +33,6 @@ sql.connect(config).then(() => {
     console.log('error de conexión con la base de datos', err);
 });
 
-//utilizar motor de vistas ejs
-app.set("view engine", "ejs");
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -40,7 +42,7 @@ app.get("/", function (req, res) {
 });
 
 //obtener datos del formulario
-app.post("/validate", function (req, res) {
+app.post("/register", function (req, res) {
     const data = req.body; //obtener datos
 
     //guardar datos
@@ -76,7 +78,6 @@ app.post("/validate", function (req, res) {
 
 
 });
-
 
 //Creación servidor local
 app.listen(3030, function () {
