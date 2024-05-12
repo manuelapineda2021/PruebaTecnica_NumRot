@@ -6,6 +6,8 @@ const app = express();
 
 //utilizar motor de vistas ejs
 app.set("view engine", "ejs");
+app.use(express.static('public'));
+
 
 //Configuración de la conexión con la base de datos.
 const config = {
@@ -73,8 +75,6 @@ app.post("/register", function (req, res) {
     }).catch(err =>{
         console.error('Error', err)
     })
-
-
 });
 
 //Creación servidor local
