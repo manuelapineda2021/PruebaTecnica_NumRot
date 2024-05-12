@@ -4,8 +4,12 @@ const path = require("path");
 
 const app = express();
 
+//Almacenar registro de personas
+let peoples = [];
+
 //utilizar motor de vistas ejs
 app.set("view engine", "ejs");
+//configuración para servir archivos estáticos
 app.use(express.static('public'));
 
 
@@ -42,7 +46,7 @@ app.get("/", function (req, res) {
 });
 
 //obtener datos del formulario
-app.post("/register", function (req, res) {
+app.post("/register", (req, res) => {
     const data = req.body; //obtener datos
 
     //guardar datos
@@ -75,6 +79,38 @@ app.post("/register", function (req, res) {
     }).catch(err =>{
         console.error('Error', err)
     })
+});
+
+//Ruta consultar el nombre completo de todas las personas
+app.get('/consult-names', (req,res) =>{
+    //console.log('consultando nombres completos');
+    const fullNames = peoples.map(people => `${people.firstName} ${people.middleName ? people.middleName + '' : ''}${people.firstSurName} ${people.secondLastName ? people.secondLastName: ''}`);
+    res.send(fullNames);
+});
+
+//Ruta consultar cuántas mujeres hay
+app.get('/number-women', (req,res) =>{
+    const womens = peoples.filter(people => people.generated === 'Femenino');
+    res.send({amount: womens.length});
+});
+
+//Ruta consultar cuántos hombres hay
+app.get('/number-man', (req,res) =>{
+    const man = peoples.filter(people => people.generated == 'Masculino');
+    res.send({amount: man.length});
+})
+
+//Ruta consultar nombre completo persona con mayor edad
+app.get('/older-age', (req,res) =>{
+    const olderAge = peoples.reduce((prev, current) => (prev.age > current.age) ? prev : current);
+    res.send(`${olderAge.firstName}  ${olderAge.middleName ? olderAge.middleName + '' : ''}${olderAge.firstSurName} ${olderAge.secondLastName ? olderAge.secondLastName: ''}`);
+});
+
+//Ruta consultar promedio de edad
+app.get('/average-age', (req,res) =>{
+    const totalAge = peoples.reduce((prev, current) => prev + current.age, 0);
+    const average = totalAge / peoples.length;
+    res.send({average: average});
 });
 
 //Creación servidor local

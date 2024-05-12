@@ -8,6 +8,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Prueba Técnica - NumRot</title>
     <script src="/js/equation.js"></script>
+    <script src="/js/queries.js"></script>
 </head>
 
 <body>
@@ -85,28 +86,28 @@
                     <h2 class="text-center text-primary">Consultas - Registro de Usuarios</h2>
                     <div style="font-weight: bold;">
 
-                        <label for="fullNames">Consultar nombres completos:</label>
-                        <input id="fullNames" class="form-control my-2" type="text" placeholder="Respuesta" readonly>
+                        <label>Consultar nombres completos:</label>
+                        <div id="fullNames" class="form-control my-2"></div>
                         <button type="button" class="btn btn-primary"
                             onclick="consultFullNames()">Consultar</button><br>
 
-                        <label for="numberWomen" class="mt-3">Consultar cantidad de mujeres:</label>
-                        <input id="numberWomen" class="form-control my-2" type="text" placeholder="Respuesta" readonly>
+                        <label class="mt-3">Consultar cantidad de mujeres:</label>
+                        <div id="numberWomen" class="form-control my-2"></div>
                         <button type="button" class="btn btn-primary"
                             onclick="consultNumberWomen()">Consultar</button><br>
 
-                        <label for="numberMan" class="mt-3">Consultar cantidad de hombres:</label>
-                        <input id="numberMan" class="form-control my-2" type="text" placeholder="Respuesta"readonly>
+                        <label class="mt-3">Consultar cantidad de hombres:</label>
+                        <div id="numberMan" class="form-control my-2"></div>
                         <button type="button" class="btn btn-primary"
                             onclick="consultNumberMan()">Consultar</button><br>
 
-                        <label for="olderAge" class="mt-3">Consultar nombre completo de la persona con mayor edad:</label>
-                        <input id="olderAge" class="form-control my-2" type="text" placeholder="Respuesta"readonly>
+                        <label class="mt-3">Consultar nombre completo de la persona con mayor edad:</label>
+                        <div id="olderAge" class="form-control my-2"></div>
                         <button type="button" class="btn btn-primary"
                             onclick="consultOlderAge()">Consultar</button><br>
 
-                        <label for="averageAge" class="mt-3">Consultar el promedio de la edad:</label>
-                        <input id="averageAge" class="form-control my-2" type="text" placeholder="Respuesta"readonly>
+                        <label class="mt-3">Consultar el promedio de la edad:</label>
+                        <div id="averageAge" class="form-control my-2"></div>
                         <button type="button" class="btn btn-primary"
                             onclick="consultAverageAge()">Consultar</button><br>
 
